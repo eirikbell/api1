@@ -1,0 +1,31 @@
+version: '2'
+services:
+  zookeeper:
+    image: zookeeper:3.4.10
+    container_name: zookeeper
+    ports: 
+      - "2181:2181"
+  kafka:
+    image: wurstmeister/kafka:0.10.2
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      - ADVERTISED_HOST=127.0.0.1 # TODO verify
+      - ADVERTISED_PORT=9092
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.2
+    container_name: elasticsearch
+    volumes:
+      - /usr/share/elasticsearch/data
+    environment:
+      - http.host=0.0.0.0
+    ports:
+      - "9200:9200"
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:6.1.2
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_URL=http://localhost:9200
+    ports:
+      - "5601:5601"
