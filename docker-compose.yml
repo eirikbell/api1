@@ -1,21 +1,15 @@
 version: '2'
 services:
-  zookeeper:
-    image: zookeeper:3.4.10
-    container_name: zookeeper
-    ports: 
-      - "2181:2181"
   kafka:
-    image: wurstmeister/kafka:0.10.2.0
+    image: spotify/kafka
     container_name: kafka
     ports:
+      - "2181:2181"
       - "9092:9092"
     environment:
-      ADVERTISED_HOST: 127.0.0.1 # TODO verify
+      ADVERTISED_HOST: localhost
       ADVERTISED_PORT: 9092
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      AUTO_CREATE_TOPICS: "true"
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.2
     container_name: elasticsearch
