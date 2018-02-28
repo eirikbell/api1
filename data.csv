@@ -1,4 +1,4 @@
-customerId,first_name,last_name,email,pageId,url,time_spent_ms
+customerId,firstName,lastName,email,pageId,url,timeSpentMs
 440336c5-293a-488a-a829-79a1f3ea00ef,Roobbie,Baigrie,rbaigrie0@indiegogo.com,43,http://testsite.zz/43/cars,88742
 933af785-dfc4-404a-8ca9-be73e78c5db0,Lezlie,Raubheim,lraubheim1@answers.com,43,http://testsite.zz/43/cars,115495
 b77c4a27-717a-458a-9d64-89500ed3a5c7,Kissie,Damiata,kdamiata2@unc.edu,43,http://testsite.zz/43/cars,58556
