@@ -20,6 +20,8 @@ docker logs --tail 2000 -f elasticsearch
 docker logs --tail 2000 -f kibana
 ```
 
+Åpne webgrensesnitt mot kibana: [http://localhost:5601](http://localhost:5601 "kibana")
+
 ## Oppgaver
 
 Oppgavene innebærer arbeid på selvstendige mikrotjenester. De tre mikrotjenesten har hver sin mappe: parse-file, index-documents og rest-api. Implementasjonsspråk er valgfritt, det anbefales å benytte et språk som har klientbiblioteker til Kafka (versjon 0.10.2) [https://cwiki.apache.org/confluence/display/KAFKA/Clients](https://cwiki.apache.org/confluence/display/KAFKA/Clients "Kafka client libraries") og Elasticsearch (versjon 6.x) [https://www.elastic.co/guide/en/elasticsearch/client/index.html](https://www.elastic.co/guide/en/elasticsearch/client/index.html "Elasticsearch official clients"), [https://www.elastic.co/guide/en/elasticsearch/client/community/current/index.html](https://www.elastic.co/guide/en/elasticsearch/client/community/current/index.html "Elasticsearch community clients").
