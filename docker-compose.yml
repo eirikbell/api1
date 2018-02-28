@@ -6,26 +6,29 @@ services:
     ports: 
       - "2181:2181"
   kafka:
-    image: wurstmeister/kafka:0.10.2
+    image: wurstmeister/kafka:0.10.2.0
     container_name: kafka
     ports:
       - "9092:9092"
     environment:
-      - ADVERTISED_HOST=127.0.0.1 # TODO verify
-      - ADVERTISED_PORT=9092
+      ADVERTISED_HOST: 127.0.0.1 # TODO verify
+      ADVERTISED_PORT: 9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.2
     container_name: elasticsearch
     volumes:
       - /usr/share/elasticsearch/data
     environment:
-      - http.host=0.0.0.0
+      http.host: 0.0.0.0
     ports:
       - "9200:9200"
   kibana:
     image: docker.elastic.co/kibana/kibana-oss:6.1.2
     container_name: kibana
     environment:
-      - ELASTICSEARCH_URL=http://localhost:9200
+      ELASTICSEARCH_URL: http://localhost:9200
     ports:
       - "5601:5601"
