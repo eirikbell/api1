@@ -12,10 +12,9 @@ Start infrastruktur ved å kjøre: `docker-compose up -d`
 
 Stopp infrastruktur ved å kjøre: `docker-compose down`. Ved stopping av infrastruktur, slettes samtidig alle data. Data kan gjøres persistente ved å legge et docker volum til kafka og elasticsearch containerne og konfigurere data fra dem til å lagres på volumene.
 
-Se hvilke containere som kjører: `docker ps`, her skal det listes 4 tjenester: zookeeper, kafka, elasticsearch og kibana. Dersom en av tjenestene ikke kjører må man feilsøke årsaken til at den ikke starter, kommandoer for å sjekke logger:
+Se hvilke containere som kjører: `docker ps`, her skal det listes 3 tjenester: kafka, elasticsearch og kibana. Dersom en av tjenestene ikke kjører må man feilsøke årsaken til at den ikke starter, kommandoer for å sjekke logger:
 
 ```bash
-docker logs --tail 2000 -f zookeeper
 docker logs --tail 2000 -f kafka
 docker logs --tail 2000 -f elasticsearch
 docker logs --tail 2000 -f kibana
