@@ -18,8 +18,8 @@ func main() {
 	application := newApp()
 
 	if application != nil {
-		application.parseFile("./../data.csv")
-		// application.parseFile("data.csv")
+		application.parseFile("/data/data.csv")
+		// application.parseFile("./../data.csv")
 	}
 
 	log.Infoln("Terminating application")

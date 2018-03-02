@@ -1,17 +1,11 @@
-# Alpine Linux 3.6
-FROM alpine:3.6 
+FROM golang:1.8
 
-# Ubuntu 16.04
-# FROM ubuntu:16.04
+RUN mkdir /app /data
 
-# CentOS 6.9
-# FROM centos:6.9
+COPY parse-file/bin/parse-file /app/parse-file
+# RUN ["chmod", "+x", "/app/parse-file"]
 
-# Debian based image with Java 8 jdk
-# FROM openjdk:8-jdk
+VOLUME ["/data"]
 
-# Debian based image with Python 3.6
-# FROM python:3.6
-
-# Debian based image with Python 2.7
-# FROM python:2.7
+WORKDIR /app
+CMD ["/app/parse-file"]
