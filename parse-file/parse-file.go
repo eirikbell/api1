@@ -68,12 +68,12 @@ func (application *app) parseFile(filename string) {
 		if firstLine {
 			headerRow = line
 			firstLine = false
+		} else {
+			linecount++
+			id := fmt.Sprintf("%s-%d", filename, linecount)
+
+			go application.sendLineToKafka(sendChannel, headerRow, line, filename, id)
 		}
-
-		linecount++
-		id := fmt.Sprintf("%s-%d", filename, linecount)
-
-		go application.sendLineToKafka(sendChannel, headerRow, line, filename, id)
 	}
 
 	for i := 0; i < linecount; i++ {
@@ -110,7 +110,7 @@ func (application *app) sendLineToKafka(sendChannel chan error, headerRow, line 
 	}
 
 	msg := &sarama.ProducerMessage{
-		Topic: "pageviews2",
+		Topic: "pageviews2-2",
 		Value: sarama.StringEncoder(bytes),
 	}
 
